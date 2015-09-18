@@ -7,30 +7,33 @@
 <body>
 <?php
 
-    $name = $_POST['name'];
-    $comment = $_POST['comment'];
+    if(isset($_POST['csv'])):
 
-    $array = array($name, $comment);
-    $handle = fopen('data.csv','a');
+        $name = $_POST['name'];
+        $comment = $_POST['comment'];
 
-    if (flock($handle, LOCK_EX)):
-        fputcsv($handle, $array);
-        flock($handle, LOCK_UN);
+        $array = array($name, $comment);
+        $handle = fopen('data.csv','a');
 
-?>
-        <p>保存しました。<a href="input.php">再入力</a></p>
-<?php
+        if (flock($handle, LOCK_EX)):
 
-        // ファイル取得できない場合
-    else:
+            fputcsv($handle, $array);
+            flock($handle, LOCK_UN);
 
 ?>
-        <p>ファイルを取得できませんでした。<a href="input.php">再入力</a></p>
+            <p>保存しました。<a href="input.php">再入力</a></p>
 <?php
+
+        else: // ファイル取得できない場合
+
+?>
+            <p>ファイルを取得できませんでした。<a href="input.php">再入力</a></p>
+<?php
+
+        endif;
+        fclose($handle);
 
     endif;
-
-    fclose($handle);
 
 ?>
 </body>

@@ -30,16 +30,22 @@
         <dd><?php echo $escape_comment; ?></dd>
     </dl>
 
-    <form  action ="setcsv.php" method="post">
+    <form action ="setcsv.php" method="post">
         <input type="hidden" name="name" value="<?php echo $name; ?>">
         <input type="hidden" name="comment" value="<?php echo $comment; ?>">
-        <input type="submit" value="CSVで保存">
+        <input type="submit" name="csv" value="CSVで保存">
     </form>
 
     <form action="send.php" method="post">
-        <input type ="hidden" name="name" value="<?php echo $name; ?>">
-        <input type ="hidden" name="comment" value="<?php echo $comment; ?>">
-        <input type ="submit" value="送信">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="comment" value="<?php echo $comment; ?>">
+        <input type="submit" name="mail" value="メール送信">
+    </form>
+
+    <form action="database.php" method="post">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="comment" value="<?php echo $comment; ?>">
+        <input type="submit" name="db" value="データベース送信">
     </form>
 </body>
 </html>

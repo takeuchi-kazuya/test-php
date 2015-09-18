@@ -7,36 +7,39 @@
 <body>
 <?php
 
-    $name = $_POST['name'];
-    $comment = $_POST['comment'];
-    $body = $name.PHP_EOL.$comment;
+    if(isset($_POST['mail'])):
 
-    // $name    = htmlspecialchars($name, ENT_QUOTES);
-    // $comment = htmlspecialchars($comment, ENT_QUOTES);
+        $name = $_POST['name'];
+        $comment = $_POST['comment'];
+        $body = $name.PHP_EOL.$comment;
 
-    // メールアドレス
-    $fromAddress = 'example@test.com';
-    $toAddress   = 'takeuchi@tam-tam.co.jp';
+        // $name    = htmlspecialchars($name, ENT_QUOTES);
+        // $comment = htmlspecialchars($comment, ENT_QUOTES);
 
-    mb_language('Japanese');
-    mb_internal_encoding('UTF-8');
+        // メールアドレス
+        $fromAddress = 'example@test.com';
+        $toAddress   = 'takeuchi@tam-tam.co.jp';
 
-    // 件名
-    $header = 'From: <' . $fromAddress . '>';
+        mb_language('Japanese');
+        mb_internal_encoding('UTF-8');
 
-    // 送信
-    $result = mb_send_mail($toAddress, $header, $body);
+        // 件名
+        $header = 'From: <' . $fromAddress . '>';
 
-    if ($result){
+        // 送信
+        $result = mb_send_mail($toAddress, $header, $body);
 
-        echo '送信しました'; 
+        if($result):
 
-    } else{
+            echo '送信しました';
 
-        echo '送信しませんでした'; 
+        else:
 
-    }  
+            echo '送信しませんでした';
 
+        endif;
+
+    endif;
 ?>
 </body>
 </html>
