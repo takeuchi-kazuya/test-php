@@ -9,12 +9,12 @@
 
     // require_once('data.php');
 
-    $dsn = 'mysql:dbname='.$dbName.';host='.$host.';charset=utf8';
-    $user = 'ユーザー';
-    $password = 'パスワード';
+    $dsn = 'mysql:dbname='.$dbName.';host=localhost';
+    // $user = 'ユーザー';
+    // $password = 'パスワード';
 
     if(isset($_POST['db'])):
-        
+
         $name    = $_POST['name'];
         $comment = $_POST['comment'];
 
